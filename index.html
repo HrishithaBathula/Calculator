@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Calculator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="tab-buttons">
+    <button class="tab-btn active" data-tab="calculator">🧮 Scientific </button>
+    <button class="tab-btn" data-tab="converter">📐 Conversions</button>
+    <button class="tab-btn" data-tab="history">🕘 History</button>
+  </div>
+
+  <div id="calculator" class="tab-content active">
+    <div class="calculator">
+      <input type="text" id="display" disabled value="0" />
+      <div class="calc-panels">
+        <div class="calc-column numbers">
+          <button onclick="appendFunction('7')">7</button>
+          <button onclick="appendFunction('8')">8</button>
+          <button onclick="appendFunction('9')">9</button>
+          <button onclick="appendFunction('4')">4</button>
+          <button onclick="appendFunction('5')">5</button>
+          <button onclick="appendFunction('6')">6</button>
+          <button onclick="appendFunction('1')">1</button>
+          <button onclick="appendFunction('2')">2</button>
+          <button onclick="appendFunction('3')">3</button>
+          <button onclick="appendFunction('+/-')">+/-</button>
+          <button onclick="appendFunction('0')">0</button>
+          <button onclick="appendFunction('.')">.</button>
+        </div>
+
+        <div class="calc-column scientific">
+          <button onclick="appendFunction('sin(')">sin</button>
+          <button onclick="appendFunction('cos(')">cos</button>
+          <button onclick="appendFunction('tan(')">tan</button>
+          <button onclick="appendFunction('log(')">log</button>
+          <button onclick="appendFunction('ln(')">ln</button>
+          <button onclick="appendFunction('√(')">√</button>
+          <button onclick="appendFunction('^2')">x²</button>
+          <button onclick="appendFunction('^')">xʸ</button>
+          <button onclick="appendFunction('π')">π</button>
+          <button onclick="appendFunction('e')">e</button>
+          <button onclick="appendFunction('|x|')">|x|</button>
+          <button onclick="appendFunction('1/')">1/x</button>
+        </div>
+
+        <div class="calc-column operators">
+          <button onclick="appendFunction('+')">+</button>
+          <button onclick="appendFunction('-')">−</button>
+          <button onclick="appendFunction('*')">×</button>
+          <button onclick="appendFunction('/')">÷</button>
+          <button onclick="appendFunction('%')">%</button>
+          <button onclick="appendFunction('(')">(</button>
+          <button onclick="appendFunction(')')">)</button>
+          <button onclick="clearDisplay()">C</button>
+          <button class="equals" onclick="calculate()">=</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="converter" class="tab-content">
+    <div class="converter">
+      <div class="category-tabs">
+        <button class="category-btn active" onclick="selectCategory('Length', this)">Length</button>
+        <button class="category-btn" onclick="selectCategory('Area', this)">Area</button>
+        <button class="category-btn" onclick="selectCategory('Temperature', this)">Temperature</button>
+        <button class="category-btn" onclick="selectCategory('Volume', this)">Volume</button>
+        <button class="category-btn" onclick="selectCategory('Mass', this)">Mass</button>
+        <button class="category-btn" onclick="selectCategory('Speed', this)">Speed</button>
+        <button class="category-btn" onclick="selectCategory('Data', this)">Data</button>
+        <button class="category-btn" onclick="selectCategory('Time', this)">Time</button>
+      </div>
+      <div class="conversion-panel">
+        <select id="fromUnit"></select>
+        <input type="text" id="inputValue" placeholder="Enter value" disabled />
+        <select id="toUnit"></select>
+        <button onclick="convertUnits()">Convert</button>
+        <p id="convertedResult"></p>
+      </div>
+
+      <div class="num-keypad">
+        <button onclick="appendConvNumber('7')">7</button>
+        <button onclick="appendConvNumber('8')">8</button>
+        <button onclick="appendConvNumber('9')">9</button>
+        <button onclick="appendConvNumber('4')">4</button>
+        <button onclick="appendConvNumber('5')">5</button>
+        <button onclick="appendConvNumber('6')">6</button>
+        <button onclick="appendConvNumber('1')">1</button>
+        <button onclick="appendConvNumber('2')">2</button>
+        <button onclick="appendConvNumber('3')">3</button>
+        <button onclick="appendConvNumber('0')">0</button>
+        <button onclick="appendConvNumber('.')">.</button>
+        <button onclick="clearConvInput()">C</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="history" class="tab-content">
+    <div class="history">
+      <h2>Calculation History</h2>
+      <ul id="historyList"></ul>
+      <button onclick="clearHistory()">Clear History</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
